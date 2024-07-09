@@ -6,45 +6,53 @@
     <title>Employee List</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .employee-card {
-            margin-bottom: 20px;
+        .employee-table th, .employee-table td {
+            vertical-align: middle;
         }
-        .employee-header {
+        .employee-table th {
             background-color: #352e2c;
-            padding: 10px;
-            border-radius: 5px 5px 0 0;
             color: #dee2e6;
-        }
-        .employee-body {
-            padding: 10px;
-            border: 1px solid #dee2e6;
-            border-top: none;
-            border-radius: 0 0 5px 5px;
-            background-color: #ece0dd;
         }
     </style>
 </head>
 <body>
     <div class="container mt-5">
         <div class="row">
-            {% for employee in employees %}
-            <div class="col-md-6">
-                <div class="card employee-card">
-                    <div class="card-header employee-header">
-                        <h5>Employee ID: {{employee.employee_id}}</h5>
-                    </div>
-                    <div class="card-body employee-body">
-                        <h6 class="card-title">Nama: {{employee.name}}</h6><hr>
-                        <p class="card-text">Umur: {{employee.age}}</p><hr>
-                        <p class="card-text">NIK: {{employee.nik}}</p><hr>
-                        <p class="card-text">Address: {{employee.address}}</p><hr>
-                        <p class="card-text">Jenis Kelamin: {{employee.tgl_lahir}}</p><hr>
-                        <p class="card-text">No.HP: {{employee.hp}}</p><hr>
-                        <p class="card-text">Tempat Tanggal Lahir: {{employee.tgl_lahir}}</p>
-                    </div>
-                </div>
+            <div class="col-md-12">
+            <a href="{{ url_for('create') }}"><button>Add Employee</button></a>
+                <table class="table table-bordered employee-table">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Nama</th>
+                            <th>Umur</th>
+                            <th>NIK</th>
+                            <th>Address</th>
+                            <th>Jenis Kelamin</th>
+                            <th>No.HP</th>
+                            <th>Tempat Tanggal Lahir</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for employee in employees %}
+                        <tr>
+                            <td>{{employee.employee_id}}</td>
+                            <td>{{employee.name}}</td>
+                            <td>{{employee.age}}</td>
+                            <td>{{employee.nik}}</td>
+                            <td>{{employee.address}}</td>
+                            <td>{{employee.jk}}</td>
+                            <td>{{employee.hp}}</td>
+                            <td>{{employee.tgl_lahir}}</td>
+                            <td><a href="{{ url_for('RetrieveEmployee', id=employee.id) }}"><button>Lihat</button></a>
+                            <a href="{{ url_for('update', id=employee.id) }}"><button>Edit</button></a>
+                                <a href="{{ url_for('delete', id=employee.id) }}"><button>Hapus</button></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
-            {% endfor %}
         </div>
     </div>
 
