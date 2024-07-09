@@ -28,9 +28,13 @@ def create():
         name = request.form['name']
         age = request.form['age']
         nik = request.form['nik']
+        address = request.form['address']
+        jk = request.form['jk']
+        hp = request.form['hp']
+        tgl_lahir = request.form['tgl_lahir']
 
         # Membuat objek EmployeeModel baru dan menyimpannya ke database
-        employee = EmployeeModel(employee_id=employee_id, name=name, age=age, nik=nik)
+        employee = EmployeeModel(employee_id=employee_id, name=name, age=age, nik=nik, address=address, jk=jk, hp=hp, tgl_lahir=tgl_lahir)
         db.session.add(employee)
         db.session.commit()
 
@@ -69,9 +73,13 @@ def update(id):
             name = request.form['name']
             age = request.form['age']
             nik = request.form['nik']
+            address = request.form['address']
+            jk = request.form['jk']
+            hp = request.form['hp']
+            tgl_lahir = request.form['tgl_lahir']
 
             # Membuat objek EmployeeModel baru dengan data yang diperbarui
-            employee = EmployeeModel(employee_id=id, name=name, age=age, nik=nik)
+            employee = EmployeeModel(employee_id=id, name=name, age=age, nik=nik, address=address, jk=jk, hp=hp, tgl_lahir=tgl_lahir)
             db.session.add(employee)
             db.session.commit()
 

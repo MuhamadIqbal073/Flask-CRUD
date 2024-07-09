@@ -11,12 +11,21 @@ class EmployeeModel(db.Model):
     name = db.Column(db.String())
     age = db.Column(db.Integer())
     nik = db.Column(db.String(80))
+    address = db.Column(db.String())
+    jk = db.Column(db.String())
+    hp = db.Column(db.Integer())
+    tgl_lahir = db.Column(db.String())
 
-    def __init__(self, employee_id, name, age, nik):
+    def __init__(self, employee_id, name, age, nik, address, jk, hp, tgl_lahir):
         self.employee_id = employee_id
         self.name = name
         self.age = age
         self.nik = nik
+        self.address = address
+        self.jk = jk
+        self.hp = hp
+        self.tgl_lahir = tgl_lahir
 
-    def __repr__(self):
-        return f"{self.name}:{self.employee_id}"
+
+    # def __repr__(self):
+    #     return f"{self.employee_id}"
